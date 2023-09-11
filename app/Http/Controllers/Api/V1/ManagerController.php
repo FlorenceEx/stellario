@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Manager;
 use App\Http\Resources\V1\ManagerCollection;
+use App\Http\Resources\V1\ManagerResource;
 
 class ManagerController extends Controller
 {
@@ -29,9 +30,9 @@ class ManagerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Manager $manager)
     {
-        //
+        return new ManagerResource($manager);
     }
 
     /**
