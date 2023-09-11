@@ -41,9 +41,10 @@ class Manager extends Model
             'id' => $this->id,
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
-            'face' => json_decode($this->face, true),
+            'face' => $this->face,
             'description' => $this->description,
-            'updated_at' => $this->updated_at->format('d/m/Y à H:i')
+            'updated_at' => $this->updated_at->format('d/m/Y à H:i'),
+            'florence' => 123
         ];
     }
 }

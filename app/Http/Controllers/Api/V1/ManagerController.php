@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Manager;
+use App\Http\Resources\V1\ManagerCollection;
 
 class ManagerController extends Controller
 {
@@ -13,8 +14,8 @@ class ManagerController extends Controller
      */
     public function index()
     {
-        $query = Manager::all();
-        return $query;
+        $managers = Manager::all();
+        return new ManagerCollection($managers);
     }
 
     /**
