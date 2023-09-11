@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Api\V1;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\V1\UpdateManagerRequest;
 use App\Models\Manager;
 use App\Http\Resources\V1\ManagerCollection;
 use App\Http\Resources\V1\ManagerResource;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 class ManagerController extends Controller
 {
@@ -38,9 +40,10 @@ class ManagerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateManagerRequest $request, Manager $manager) : JsonResource
     {
-        //
+        $manager->update($request->validated());
+        return new ManagerResource($manager);
     }
 
     /**
