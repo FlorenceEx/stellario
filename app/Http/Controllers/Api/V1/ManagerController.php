@@ -46,8 +46,26 @@ class ManagerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(int $manager)
     {
-        //
+        $message = "Manager supprimé aves succès";
+        $type = "success";
+
+        //laravel permet de supprimer un objet directement de la bdd
+        try {
+            $manager = Manager::findOrFail($manager);
+            $manager->delete();
+        } catch (\Throwable $th) {
+            $message = "Ce manager n'existe pas";
+            $type = "danger";
+        }
+
+        // toast : système de notification vue.js
+        return response()->json([
+            'toast' => [
+                'message' => $message,
+                'type' => $type
+            ]
+        ]);
     }
 }
