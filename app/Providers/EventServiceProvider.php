@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Models\Star;
+use App\Models\Manager;
+use App\Observers\ManagerObserver;
 use App\Observers\StarObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -27,6 +29,7 @@ class EventServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Star::observe(StarObserver::class);
+        Manager::observe(ManagerObserver::class);
     }
 
     /**
