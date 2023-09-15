@@ -22,8 +22,12 @@ class ManagerController extends Controller
         return new ManagerCollection($managers);
     }
 
+    
     /**
-     * Store a newly created resource in storage.
+     * store
+     *
+     * @param  StoreManagerRequest $request
+     * @return JsonResource
      */
     public function store(StoreManagerRequest $request): JsonResource
     {
