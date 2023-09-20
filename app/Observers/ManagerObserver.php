@@ -4,7 +4,6 @@ namespace App\Observers;
 
 use App\Models\Manager;
 use App\Http\Services\FileService;
-use Dotenv\Store\File\Paths;
 
 class ManagerObserver
 {
@@ -41,10 +40,7 @@ class ManagerObserver
     public function updating(Manager $manager): void
     {
         $_manager = Manager::find($manager->id);
-        if(gettype($manager->face) == "array"){
-            $facejson = json_encode($_manager->face);
-        }
-        $face = json_decode($facejson);
+        $face = json_decode($_manager->face);
 
         $face && $this->deleteSafelyFace($face->origin);
     }
