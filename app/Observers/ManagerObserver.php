@@ -30,7 +30,7 @@ class ManagerObserver
         $face = json_decode($manager->face);
         if (!$face || !in_array($face->origin, $this->seeders)) {
             $path = 'public/star.png';
-            $manager->update(['face' => json_decode(FileService::jsonMetadata($path))]);
+            $manager->update(['face' => FileService::jsonMetadata($path)]);
         }
     }
 

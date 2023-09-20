@@ -14,14 +14,6 @@ class ManagerResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $jsonface = json_encode($this->face);
-        return [
-            'id' => $this->id,
-            'first_name' => $this->first_name,
-            'last_name' => $this->last_name,
-            'face' => json_decode($jsonface,true),
-            'description' => $this->description,
-            'updated_at' => $this->updated_at->format('d/m/Y à H:i')
-        ];
+        return parent::toArray($request);
     }
 }
